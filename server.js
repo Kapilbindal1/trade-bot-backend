@@ -1,4 +1,3 @@
-const port = 3000;
 const express = require('express')
 const app = express();
 const Users  = require("./conrtrollers/users");
@@ -12,13 +11,12 @@ console.log("uri=====>", uri)
     useNewUrlParser: true,
     useUnifiedTopology: true
   }).then(()=>{
-    app.get('/', (req, res) => {
-        res.send('Hello World!')
-      });
-    app.get('/users', Users.getUsers);
-      
-      app.listen(port, () => {
-        console.log(`Example app listening on port ${port}!`)
+      app.listen(process.env.PORT || 5000, () => {
+        app.get('/', (req, res) => {
+          res.send('Hello World!')
+        });
+      app.get('/users', Users.getUsers);
+        console.log(`Example app listening on port ${process.env.PORT}`)
       });
   })
 

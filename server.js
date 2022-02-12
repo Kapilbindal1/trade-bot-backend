@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express();
 const Users  = require("./conrtrollers/users");
+const Logs  = require("./conrtrollers/logs");
 const mongoose = require("mongoose");
 const dotEnv = require("dotenv");
 dotEnv.config();
@@ -16,6 +17,7 @@ console.log("uri=====>", uri)
           res.send('Hello World!')
         });
       app.get('/users', Users.getUsers);
+      app.get('/logs', Logs.getLogs);
         console.log(`Example app listening on port ${process.env.PORT}`)
       });
   })
